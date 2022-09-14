@@ -6,8 +6,7 @@ import Header from '../components/Header'
 const Screen1 = () => {
   return (
     <View>
-        <Header/>
-      <Text>Screen1</Text>
+        <Header>Screen 1</Header>
     </View>
   )
 }

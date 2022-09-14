@@ -29,7 +29,7 @@ const Header = (props) => {
       <View style={styles.headingText}>
         <Paragraph style={styles.title}>{props.children}</Paragraph>
       </View>
-      <TouchableOpacity>
+      <TouchableOpacity >
         <Ionicons name="exit-outline" size={24} color="black" />
       </TouchableOpacity>
     </SafeAreaView>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     fontWeight: "800",
   },
   headingText: {
-    width: ScreenWidth * 0.7,
+    width: ScreenWidth * 0.6,
     alignItems: "center",
   },
 });

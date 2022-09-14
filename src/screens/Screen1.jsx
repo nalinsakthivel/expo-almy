@@ -2,11 +2,12 @@ import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 import Header from '../components/Header'
+import { styless } from '../constants'
 
 const Screen1 = () => {
   return (
-    <View>
-        <Header>Screen 1</Header>
+    <View style={styless.mainContainer}>
+        <Header>Home</Header>
     </View>
   )
 }

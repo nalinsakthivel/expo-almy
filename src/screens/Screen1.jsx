@@ -1,4 +1,4 @@
-import { StyleSheet, FlatList, View, Text, Image ,Button} from "react-native";
+import { StyleSheet, FlatList, View, Text, Image ,Button,ImageBackground} from "react-native";
 import React, { useEffect, useState,useRef } from "react";
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
@@ -21,8 +21,6 @@ const Screen1 = () => {
   const responseListener = useRef();
 
   useEffect(() => {
-    registerForPushNotificationsAsync().then(token => setExpoPushToken(token));
-
     // This listener is fired whenever a notification is received while the app is foregrounded
     notificationListener.current = Notifications.addNotificationReceivedListener(notification => {
       setNotification(notification);
@@ -48,7 +46,7 @@ const Screen1 = () => {
 
   const getData = async () => {
     let result = await fetch(
-      `http://jsonplaceholder.typicode.com/photos?_start=0&_limit=30`
+      `https://fakestoreapi.com/products`
     );
 
     result = await result.json();
@@ -58,7 +56,7 @@ const Screen1 = () => {
   const renderItem = ({ item, index }) => (
     <View key={index} style={styles.cardContainer}>
       <Image
-        source={{ uri: "https://picsum.photos/id/1003/3000/2000" }}
+        source={{ uri: item.image }}
         style={styles.Image}
       />
       <Paragraph style={styles.titleText}>{item.title}</Paragraph>
@@ -71,27 +69,6 @@ const Screen1 = () => {
     </View>
   );
 
-
-  // async function sendPushNotification(expoPushToken) {
-  //   const message = {
-  //     to: expoPushToken,
-  //     sound: 'default',
-  //     title: 'Original Title',
-  //     body: 'And here is the body!',
-  //     data: { someData: 'goes here' },
-  //   };
-  
-  //   await fetch('https://exp.host/--/api/v2/push/send', {
-  //     method: 'POST',
-  //     headers: {
-  //       Accept: 'application/json',
-  //       'Accept-encoding': 'gzip, deflate',
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify(message),
-  //   });
-  // }
-  
   async function registerForPushNotificationsAsync() {
     let token;
     if (Device.isDevice) {
@@ -123,8 +100,11 @@ const Screen1 = () => {
     return token;
   }
 
+  
+
   return (
     <View style={styless.mainContainer}>
+     
       <Header>Home</Header>
       <View style={styles.outerContainer}>
         <FlatList
@@ -134,25 +114,6 @@ const Screen1 = () => {
           ListFooterComponent={footer()}
         />
       </View>
-       {/* <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-around',
-      }}>
-      <Text>Your expo push token: {expoPushToken}</Text>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Title: {notification && notification.request.content.title} </Text>
-        <Text>Body: {notification && notification.request.content.body}</Text>
-        <Text>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
-      </View>
-      <Button
-        title="Press to Send Notification"
-        onPress={async () => {
-          await sendPushNotification(expoPushToken);
-        }}
-      />
-    </View> */}
     </View>
   );
 };
@@ -195,5 +156,10 @@ const styles = StyleSheet.create({
   titleText:{
     marginTop:10,
 
-  }
+  },
+  imageBackground: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
 });

@@ -11,7 +11,7 @@ export const colours = {
 export const styless = StyleSheet.create({
   mainContainer: {
 flex:1,
-backgroundColor:colours.White,
+
 alignItems:'center'
   },
 });

@@ -2,6 +2,7 @@
   "expo": {
     "name": "Almy",
     "slug": "almy",
+    "description": "An basic react native app for my knowledge",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/icon.png",
@@ -18,9 +19,11 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.nalinssn.almy"
     },
     "android": {
+      "versionCode":"2",
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -30,19 +33,7 @@
     "web": {
       "favicon": "./src/assets/favicon.png"
     },
-    "plugins": [
-      [
-        "expo-notifications",
-        {
-          "icon": "./local/assets/notification-icon.png",
-          "color": "#ffffff",
-          "sounds": [
-            "./local/assets/notification-sound.wav",
-            "./local/assets/notification-sound-other.wav"
-          ]
-        }
-      ]
-    ],
+  
     "extra": {
       "eas": {
         "projectId": "5b7a0851-7c58-4286-846a-3869b8ad0034"

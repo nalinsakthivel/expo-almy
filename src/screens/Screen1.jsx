@@ -63,7 +63,7 @@ const Screen1 = () => {
 
   const renderItem1 = ({ item, index }) => (
     <TouchableOpacity key={index} style={styles.cardContainer}>
-      <Images source={item.image} style={styles.Image} />
+      <Images source={item.image}  />
       <Paragraph style={styles.titleText}>{item.title}</Paragraph>
     </TouchableOpacity>
   );
